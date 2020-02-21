@@ -1,4 +1,4 @@
-package com.example.stringextensions
+package cz.ackee.stringextensions
 
 import junit.framework.TestCase.assertFalse
 import junit.framework.TestCase.assertTrue

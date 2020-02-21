@@ -1,4 +1,4 @@
-package com.example.stringextensions
+package cz.ackee.stringextensions
 
 object EmailValidation {
 
