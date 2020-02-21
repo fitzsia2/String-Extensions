@@ -33,3 +33,14 @@ dependencies {
     implementation 'androidx.core:core-ktx:1.2.0'
     testImplementation 'junit:junit:4.13'
 }
+
+ext {
+    bintrayName = 'string-extensions'
+    publishedArtifactId = 'string-extensions'
+
+    libraryName = 'String Extensions'
+    libraryDescription = 'Helpful extensions for Strings'
+}
+
+apply from: rootProject.file('gradle/bintray/install.gradle')
+apply from: rootProject.file('gradle/bintray/bintray.gradle')
