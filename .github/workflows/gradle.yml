@@ -19,8 +19,11 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
-      run: ./gradlew clean
-      run: ./gradlew assemble
-      run: ./gradlew install
-      - name: Upload to Bintray
+      - name: Clean
+        run: ./gradlew clean
+      - name: Assemble
+        run: ./gradlew assemble
+      - name: Install
+        run: ./gradlew install
+      - name: Upload
         run: ./gradlew bintrayUpload
