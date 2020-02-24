@@ -30,6 +30,10 @@ dependencies {
     testImplementation 'junit:junit:4.13'
 }
 
+tasks.withType(Javadoc).all {
+    enabled = false
+}
+
 ext {
     bintrayName = 'string-extensions'
     publishedArtifactId = 'string-extensions'
