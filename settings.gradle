@@ -1,2 +1,2 @@
-include ':app'
+include ':string-extensions'
 rootProject.name='String Extensions'
