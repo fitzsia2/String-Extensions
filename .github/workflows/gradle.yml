@@ -27,3 +27,6 @@ jobs:
         run: ./gradlew install
       - name: Upload
         run: ./gradlew bintrayUpload
+        env:
+          bintrayUsername: ${{ secrets.bintrayUsername }}
+          bintrayApiKey: ${{ secrets.bintrayApiKey }}

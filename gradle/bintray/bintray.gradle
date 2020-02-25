@@ -29,9 +29,31 @@ artifacts {
     archives sourcesJar
 }
 
+
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+def bintrayUser
+if (properties.getProperty("bintray.user") != null) {
+    bintrayUser = properties.getProperty("bintray.user")
+    println("using local")
+} else {
+    println("using env")
+    bintrayUser = System.getenv("bintrayUsername")
+}
+
+def bintrayApiKey
+if (properties.getProperty("bintray.apikey") != null) {
+    println("using local")
+    bintrayApiKey = properties.getProperty("bintray.apikey")
+} else {
+    println("using env")
+    bintrayApiKey = System.getenv("bintrayApiKey")
+}
+
 bintray {
-    user = System.getenv("bintrayUsername")
-    key = System.getenv("bintrayApiKey")
+    user = bintrayUser
+    key = bintrayApiKey
 
     configurations = ['archives']
     pkg {
