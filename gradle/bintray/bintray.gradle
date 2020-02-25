@@ -31,20 +31,15 @@ artifacts {
 
 
 Properties properties = new Properties()
+def bintrayUser
+def bintrayApiKey
 if (project.rootProject.file('local.properties').exists()) {
     properties.load(project.rootProject.file('local.properties').newDataInputStream())
-}
-
-def bintrayUser = bintrayUser = System.getenv("bintrayUsername")
-if (bintrayUser == null) {
     bintrayUser = properties.getProperty("bintray.user")
-    println("using local")
-}
-
-def bintrayApiKey = bintrayApiKey = System.getenv("bintrayApiKey")
-if (bintrayApiKey == null) {
-    println("using local")
     bintrayApiKey = properties.getProperty("bintray.apikey")
+} else {
+    bintrayUser = bintrayUser = System.getenv("bintrayUsername")
+    bintrayApiKey = bintrayApiKey = System.getenv("bintrayApiKey")
 }
 
 bintray {
