@@ -35,22 +35,16 @@ if (project.rootProject.file('local.properties').exists()) {
     properties.load(project.rootProject.file('local.properties').newDataInputStream())
 }
 
-def bintrayUser
-if (properties.getProperty("bintray.user") != null) {
+def bintrayUser = bintrayUser = System.getenv("bintrayUsername")
+if (bintrayUser == null) {
     bintrayUser = properties.getProperty("bintray.user")
     println("using local")
-} else {
-    println("using env")
-    bintrayUser = System.getenv("bintrayUsername")
 }
 
-def bintrayApiKey
-if (properties.getProperty("bintray.apikey") != null) {
+def bintrayApiKey = bintrayApiKey = System.getenv("bintrayApiKey")
+if (bintrayApiKey == null) {
     println("using local")
     bintrayApiKey = properties.getProperty("bintray.apikey")
-} else {
-    println("using env")
-    bintrayApiKey = System.getenv("bintrayApiKey")
 }
 
 bintray {
